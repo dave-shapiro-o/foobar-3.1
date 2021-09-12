@@ -13,8 +13,12 @@ public class Solution {
         if (isImpossible()) {
             return "impossible";
         }
-        if (X.equals(BigInteger.ONE)){ return Y.subtract(BigInteger.ONE).toString();}
-        if (Y.equals(BigInteger.ONE)){ return X.subtract(BigInteger.ONE).toString();}
+        if (X.equals(BigInteger.ONE)) {
+            return Y.subtract(BigInteger.ONE).toString();
+        }
+        if (Y.equals(BigInteger.ONE)) {
+            return X.subtract(BigInteger.ONE).toString();
+        }
 
         BigInteger quotientXY = X.divide(Y);
         BigInteger quotientYX = Y.divide(X);
@@ -24,8 +28,7 @@ public class Solution {
         // subtract (from the larger number) the smaller number * the quotient
 
         if ((quotientXY.min(quotientYX).equals(quotientYX))
-                && !Y.equals(BigInteger.ONE)
-        ) {
+                && !Y.equals(BigInteger.ONE)) {
             while ((quotientXY.min(BigInteger.ONE).equals(BigInteger.ONE))
                     && (!X.equals(BigInteger.ZERO) && !Y.equals(BigInteger.ZERO))) {
                 count = count.add(quotientXY);
@@ -37,8 +40,7 @@ public class Solution {
             }
         }
         if ((quotientYX.min(quotientXY).equals(quotientXY))
-                && !X.equals(BigInteger.ONE)
-        ) {
+                && !X.equals(BigInteger.ONE)) {
             while ((quotientYX.min(BigInteger.ONE).equals(BigInteger.ONE))
                     && (!X.equals(BigInteger.ZERO) && !Y.equals(BigInteger.ZERO))) {
                 count = count.add(quotientYX);

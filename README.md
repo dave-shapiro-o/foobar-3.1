@@ -13,3 +13,7 @@ https://github.com/ivanseed/google-foobar-help/tree/master/challenges/bomb_baby
 There is a bit of repetition in my implementation, 
 but my attempts to refactor only made things less readable.
 i.e. it ain't pretty but it works!
+
+EDIT: I found one situation where the optimization doesn't work - 
+2 large numbers close in size.
+It must have not been in any of the test cases.

@@ -10,6 +10,6 @@ https://github.com/ivanseed/google-foobar-help/tree/master/challenges/bomb_baby
 
 (thanks!)
 
-There is a bit of repetition in my implementation of the optimisation, 
+There is a bit of repetition in my implementation, 
 but my attempts to refactor only made things less readable.
-It works anyway!
+i.e. it ain't pretty but it works!

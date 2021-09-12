@@ -13,6 +13,8 @@ public class Solution {
         if (isImpossible()) {
             return "impossible";
         }
+        if (X.equals(BigInteger.ONE)){ return Y.subtract(BigInteger.ONE).toString();}
+        if (Y.equals(BigInteger.ONE)){ return X.subtract(BigInteger.ONE).toString();}
 
         BigInteger quotientXY = X.divide(Y);
         BigInteger quotientYX = Y.divide(X);
@@ -21,26 +23,28 @@ public class Solution {
         // increase the count by the quotient of the 2 numbers
         // subtract (from the larger number) the smaller number * the quotient
 
-        if ((quotientXY.min(BigInteger.ONE).equals(BigInteger.ONE))
-                && !Y.equals(BigInteger.ONE)) {
+        if ((quotientXY.min(quotientYX).equals(quotientYX))
+                && !Y.equals(BigInteger.ONE)
+        ) {
             while ((quotientXY.min(BigInteger.ONE).equals(BigInteger.ONE))
                     && (!X.equals(BigInteger.ZERO) && !Y.equals(BigInteger.ZERO))) {
                 count = count.add(quotientXY);
                 X = X.subtract(Y.multiply(quotientXY));
-                if (X.equals(BigInteger.ZERO)) {
-                    return count.toString();
+                if (isImpossible()) {
+                    return "impossible";
                 }
                 quotientXY = X.divide(Y);
             }
         }
-        if ((quotientYX.min(BigInteger.ONE).equals(BigInteger.ONE))
-                && !X.equals(BigInteger.ONE)) {
+        if ((quotientYX.min(quotientXY).equals(quotientXY))
+                && !X.equals(BigInteger.ONE)
+        ) {
             while ((quotientYX.min(BigInteger.ONE).equals(BigInteger.ONE))
                     && (!X.equals(BigInteger.ZERO) && !Y.equals(BigInteger.ZERO))) {
                 count = count.add(quotientYX);
                 Y = Y.subtract(X.multiply(quotientYX));
-                if (Y.equals(BigInteger.ZERO)) {
-                    return count.toString();
+                if (isImpossible()) {
+                    return "impossible";
                 }
                 quotientYX = Y.divide(X);
             }
@@ -68,7 +72,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String answer = Solution.solution("7", "4");
+        String answer = Solution.solution("10", "99");
         System.out.println(answer);
     }
 }

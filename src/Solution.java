@@ -27,7 +27,7 @@ public class Solution {
         // increase the count by the quotient of the 2 numbers
         // subtract (from the larger number) the smaller number * the quotient
 
-        if ((quotientXY.min(BigInteger.ONE).equals(BigInteger.ONE))
+        if ((quotientXY.min(BigInteger.valueOf(10)).equals(BigInteger.valueOf(10)))
                 && !Y.equals(BigInteger.ONE)) {
             while ((quotientXY.min(BigInteger.ONE).equals(BigInteger.ONE))
                     && (!X.equals(BigInteger.ZERO) && !Y.equals(BigInteger.ZERO))) {
@@ -39,7 +39,7 @@ public class Solution {
                 quotientXY = X.divide(Y);
             }
         }
-        else if ((quotientYX.min(BigInteger.ONE).equals(BigInteger.ONE))
+        else if ((quotientYX.min(BigInteger.valueOf(10)).equals(BigInteger.valueOf(10)))
                 && !X.equals(BigInteger.ONE)) {
             while ((quotientYX.min(BigInteger.ONE).equals(BigInteger.ONE))
                     && (!X.equals(BigInteger.ZERO) && !Y.equals(BigInteger.ZERO))) {
@@ -74,7 +74,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String answer = Solution.solution("2", "999");
+        String answer = Solution.solution("10000000000000000000000000000000000000000000", "96599999777");
         System.out.println(answer);
     }
 }

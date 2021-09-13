@@ -32,7 +32,7 @@ public class Solution {
             while ((quotientXY.min(BigInteger.ONE).equals(BigInteger.ONE))
                     && (!X.equals(BigInteger.ZERO) && !Y.equals(BigInteger.ZERO))) {
                 count = count.add(quotientXY);
-                X = X.subtract(Y.multiply(quotientXY));
+                X = X.mod(Y);
                 if (isImpossible()) {
                     return "impossible";
                 }
@@ -44,7 +44,7 @@ public class Solution {
             while ((quotientYX.min(BigInteger.ONE).equals(BigInteger.ONE))
                     && (!X.equals(BigInteger.ZERO) && !Y.equals(BigInteger.ZERO))) {
                 count = count.add(quotientYX);
-                Y = Y.subtract(X.multiply(quotientYX));
+                Y = Y.mod(X);
                 if (isImpossible()) {
                     return "impossible";
                 }
@@ -74,7 +74,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String answer = Solution.solution("10000000000000000000000000000000000000000000", "96599999777");
+        String answer = Solution.solution("99999999999", "100000000000000000000000000000000000001");
         System.out.println(answer);
     }
 }

@@ -59,12 +59,11 @@ public class Solution {
     }
 
     private static boolean isImpossible() {
-        return (X.min(BigInteger.ZERO).equals(X) || Y.min(BigInteger.ZERO).equals(Y))
-                || X.equals(Y);
+        return X.equals(BigInteger.ZERO) || Y.equals(BigInteger.ZERO) || X.equals(Y);
     }
 
     public static void main(String[] args) {
-        String answer = Solution.solution("10000000000", "9999999999");
+        String answer = Solution.solution("4", "31");
         System.out.println(answer);
     }
 }

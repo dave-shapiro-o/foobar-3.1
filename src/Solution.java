@@ -27,29 +27,19 @@ public class Solution {
         // increase the count by the quotient of the 2 numbers
         // subtract (from the larger number) the smaller number * the quotient
 
-        if ((quotientXY.min(BigInteger.valueOf(10)).equals(BigInteger.valueOf(10)))
-                && !Y.equals(BigInteger.ONE)) {
-            while ((quotientXY.min(BigInteger.ONE).equals(BigInteger.ONE))
-                    && (!X.equals(BigInteger.ZERO) && !Y.equals(BigInteger.ZERO))) {
+        if (quotientXY.min(BigInteger.valueOf(10)).equals(BigInteger.valueOf(10))) {
                 count = count.add(quotientXY);
                 X = X.mod(Y);
                 if (isImpossible()) {
                     return "impossible";
                 }
-                quotientXY = X.divide(Y);
-            }
         }
-        else if ((quotientYX.min(BigInteger.valueOf(10)).equals(BigInteger.valueOf(10)))
-                && !X.equals(BigInteger.ONE)) {
-            while ((quotientYX.min(BigInteger.ONE).equals(BigInteger.ONE))
-                    && (!X.equals(BigInteger.ZERO) && !Y.equals(BigInteger.ZERO))) {
+        else if (quotientYX.min(BigInteger.valueOf(10)).equals(BigInteger.valueOf(10))) {
                 count = count.add(quotientYX);
                 Y = Y.mod(X);
                 if (isImpossible()) {
                     return "impossible";
                 }
-                quotientYX = Y.divide(X);
-            }
         }
 
         while (true) {
@@ -69,7 +59,7 @@ public class Solution {
     }
 
     private static boolean isImpossible() {
-        return (X.equals(BigInteger.ZERO) || Y.equals(BigInteger.ZERO))
+        return (X.min(BigInteger.ZERO).equals(X) || Y.min(BigInteger.ZERO).equals(Y))
                 || X.equals(Y);
     }
 

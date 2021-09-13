@@ -4,20 +4,18 @@ public class Solution {
 
     static BigInteger X;
     static BigInteger Y;
+    static BigInteger count;
 
     public static String solution(String x, String y) {
         X = new BigInteger(x);
         Y = new BigInteger(y);
-        BigInteger count = new BigInteger("0");
+        count = BigInteger.ZERO;
 
         if (isImpossible()) {
             return "impossible";
         }
-        if (X.equals(BigInteger.ONE)) {
-            return Y.subtract(BigInteger.ONE).toString();
-        }
-        if (Y.equals(BigInteger.ONE)) {
-            return X.subtract(BigInteger.ONE).toString();
+        if (isEitherDigitOne()) {
+            return X.equals(BigInteger.ONE)? solveIfXOrYIsOne(Y) : solveIfXOrYIsOne(X);
         }
 
         BigInteger quotientXY = X.divide(Y);
@@ -49,21 +47,28 @@ public class Solution {
                 Y = Y.subtract(X);
             }
             count = count.add(BigInteger.ONE);
-            if (X.equals(BigInteger.ONE)) {
-                return Y.subtract(BigInteger.ONE).add(count).toString();
-            }
-            if (Y.equals(BigInteger.ONE)) {
-                return X.subtract(BigInteger.ONE).add(count).toString();
+
+            if (isEitherDigitOne()) {
+                return X.equals(BigInteger.ONE)? solveIfXOrYIsOne(Y) : solveIfXOrYIsOne(X);
             }
         }
     }
 
+    private static String solveIfXOrYIsOne(BigInteger notOne) {
+        return notOne.subtract(BigInteger.ONE).add(count).toString();
+    }
+
+    private static boolean isEitherDigitOne() {
+        return X.equals(BigInteger.ONE) || Y.equals(BigInteger.ONE);
+    }
+
     private static boolean isImpossible() {
-        return X.equals(BigInteger.ZERO) || Y.equals(BigInteger.ZERO) || X.equals(Y);
+        return X.equals(BigInteger.ZERO) || Y.equals(BigInteger.ZERO)
+                || X.equals(Y) ;
     }
 
     public static void main(String[] args) {
-        String answer = Solution.solution("4", "31");
+        String answer = Solution.solution("4435762327564379536", "43457498769068324760932476983");
         System.out.println(answer);
     }
 }

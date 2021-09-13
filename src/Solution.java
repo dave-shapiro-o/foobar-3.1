@@ -30,16 +30,10 @@ public class Solution {
         if (quotientXY.min(BigInteger.valueOf(10)).equals(BigInteger.valueOf(10))) {
                 count = count.add(quotientXY);
                 X = X.mod(Y);
-                if (isImpossible()) {
-                    return "impossible";
-                }
         }
         else if (quotientYX.min(BigInteger.valueOf(10)).equals(BigInteger.valueOf(10))) {
                 count = count.add(quotientYX);
                 Y = Y.mod(X);
-                if (isImpossible()) {
-                    return "impossible";
-                }
         }
 
         while (true) {

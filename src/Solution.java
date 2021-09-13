@@ -27,11 +27,11 @@ public class Solution {
         // increase the count by the quotient of the 2 numbers
         // subtract (from the larger number) the smaller number * the quotient
 
-        if (quotientXY.min(BigInteger.valueOf(10)).equals(BigInteger.valueOf(10))) {
+        if (quotientXY.min(BigInteger.valueOf(2)).equals(BigInteger.valueOf(2))) {
                 count = count.add(quotientXY);
                 X = X.mod(Y);
         }
-        else if (quotientYX.min(BigInteger.valueOf(10)).equals(BigInteger.valueOf(10))) {
+        else if (quotientYX.min(BigInteger.valueOf(2)).equals(BigInteger.valueOf(2))) {
                 count = count.add(quotientYX);
                 Y = Y.mod(X);
         }
@@ -49,6 +49,12 @@ public class Solution {
                 Y = Y.subtract(X);
             }
             count = count.add(BigInteger.ONE);
+            if (X.equals(BigInteger.ONE)) {
+                return Y.subtract(BigInteger.ONE).add(count).toString();
+            }
+            if (Y.equals(BigInteger.ONE)) {
+                return X.subtract(BigInteger.ONE).add(count).toString();
+            }
         }
     }
 
@@ -58,7 +64,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String answer = Solution.solution("99999999999", "100000000000000000000000000000000000001");
+        String answer = Solution.solution("10000000000", "9999999999");
         System.out.println(answer);
     }
 }

@@ -24,6 +24,7 @@ public class Solution {
         // Optimisation: if one number is much larger,
         // increase the count by the quotient of the 2 numbers
         // subtract (from the larger number) the smaller number * the quotient
+        // (i.e. let the larger number = the remainder (modulus))
 
         if (quotientXY.min(BigInteger.valueOf(2)).equals(BigInteger.valueOf(2))) {
                 count = count.add(quotientXY);
@@ -68,7 +69,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String answer = Solution.solution("4435762327564379536", "43457498769068324760932476983");
+        String answer = Solution.solution("43457498769068324760932476982", "43457498769068324760932476983");
         System.out.println(answer);
     }
 }

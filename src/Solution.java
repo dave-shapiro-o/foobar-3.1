@@ -10,12 +10,11 @@ public class Solution {
         X = new BigInteger(x);
         Y = new BigInteger(y);
         count = BigInteger.ZERO;
-
         if (isImpossible()) {
             return "impossible";
         }
         if (isEitherDigitOne()) {
-            return X.equals(BigInteger.ONE)? solveIfXOrYIsOne(Y) : solveIfXOrYIsOne(X);
+            return X.equals(BigInteger.ONE) ? solveIfXOrYIsOne(Y) : solveIfXOrYIsOne(X);
         }
 
         BigInteger quotientXY = X.divide(Y);
@@ -27,12 +26,13 @@ public class Solution {
         // (i.e. let the larger number = the remainder (modulus))
 
         if (quotientXY.min(BigInteger.valueOf(2)).equals(BigInteger.valueOf(2))) {
-                count = count.add(quotientXY);
-                X = X.mod(Y);
+            count = count.add(quotientXY);
+            X = X.mod(Y);
         }
+
         else if (quotientYX.min(BigInteger.valueOf(2)).equals(BigInteger.valueOf(2))) {
-                count = count.add(quotientYX);
-                Y = Y.mod(X);
+            count = count.add(quotientYX);
+            Y = Y.mod(X);
         }
 
         while (true) {
@@ -50,7 +50,7 @@ public class Solution {
             count = count.add(BigInteger.ONE);
 
             if (isEitherDigitOne()) {
-                return X.equals(BigInteger.ONE)? solveIfXOrYIsOne(Y) : solveIfXOrYIsOne(X);
+                return X.equals(BigInteger.ONE) ? solveIfXOrYIsOne(Y) : solveIfXOrYIsOne(X);
             }
         }
     }
@@ -64,12 +64,16 @@ public class Solution {
     }
 
     private static boolean isImpossible() {
-        return X.equals(BigInteger.ZERO) || Y.equals(BigInteger.ZERO)
-                || X.equals(Y) ;
+        return X.equals(BigInteger.ZERO)
+                || Y.equals(BigInteger.ZERO)
+                || X.equals(Y)
+                || ((X.mod(Y).equals(BigInteger.ZERO)
+                    || Y.mod(X).equals(BigInteger.ZERO))
+                    && !isEitherDigitOne());
     }
 
     public static void main(String[] args) {
-        String answer = Solution.solution("43457498769068324760932476982", "43457498769068324760932476983");
+        String answer = Solution.solution("900000000000000000000000000000000000", "107");
         System.out.println(answer);
     }
 }

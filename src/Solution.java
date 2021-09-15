@@ -67,6 +67,7 @@ public class Solution {
         return X.equals(BigInteger.ZERO)
                 || Y.equals(BigInteger.ZERO)
                 || X.equals(Y)
+                // if the modulus is zero and neither number = 1
                 || ((X.mod(Y).equals(BigInteger.ZERO)
                     || Y.mod(X).equals(BigInteger.ZERO))
                     && !isEitherDigitOne());
